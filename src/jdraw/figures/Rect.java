@@ -54,6 +54,9 @@ public class Rect extends Figures implements Figure {
     private void generateHandles() {
         handleList.clear();
         handleList.add(new Handles(this, new Point(rectangle.x, rectangle.y)));
+        handleList.add(new Handles(this, new Point(rectangle.x + rectangle.width, rectangle.y)));
+        handleList.add(new Handles(this, new Point(rectangle.x, rectangle.y + rectangle.height)));
+        handleList.add(new Handles(this, new Point(rectangle.x + rectangle.width, rectangle.y + rectangle.height)));
     }
 
     /**

@@ -37,7 +37,8 @@ public class Handles implements FigureHandle {
     @Override
     public Cursor getCursor() {
         //TODO
-        return null;
+        int type = Cursor.MOVE_CURSOR;
+        return Cursor.getPredefinedCursor(type);
     }
 
     @Override
