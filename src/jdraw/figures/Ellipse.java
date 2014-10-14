@@ -12,7 +12,7 @@ import jdraw.framework.FigureEvent;
 import jdraw.framework.FigureHandle;
 import jdraw.framework.FigureListener;
 
-public class Ellipse extends Figures implements Figure {
+public class Ellipse extends AbstractFigure implements Figure {
 
 	/**
 	 * 
@@ -55,41 +55,20 @@ public class Ellipse extends Figures implements Figure {
 		if (dx != 0 || dy != 0) {
 			ellipse.x += dx;
 			ellipse.y += dy;
-			for (FigureListener l : listeners) {
-				l.figureChanged(new FigureEvent(this));
-			}
+            notifyListeners(new FigureEvent(this));
 		}
 
 	}
 
 	@Override
 	public boolean contains(int x, int y) {
-		int w = (int) ellipse.width;
-        int h = (int) ellipse.height;
-        if ((w | h) < 0) {
-            // At least one of the dimensions is negative...
-            return false;
-        }
-        // Note: if either dimension is zero, tests below must return false...
-        int x1 = (int) ellipse.x;
-        int y1 = (int) ellipse.y;
-        if (x < x1 || y < y1) {
-            return false;
-        }
-        w += x1;
-        h += y1;
-        //    overflow || intersect
-        return ((w < x1 || w > x) &&
-                (h < y1 || h > y));
+        return ellipse.contains(x,y);
 	}
 
 	@Override
 	public void setBounds(Point origin, Point corner) {
 		ellipse.setFrameFromDiagonal(origin, corner);
-		for (FigureListener l : listeners) {
-			l.figureChanged(new FigureEvent(this));
-		}
-
+        notifyListeners(new FigureEvent(this));
 	}
 
 	@Override

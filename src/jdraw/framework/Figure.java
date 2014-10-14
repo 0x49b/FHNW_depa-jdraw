@@ -106,4 +106,7 @@ public interface Figure extends java.io.Serializable, Cloneable {
 	 * @return clone of figure
 	 */
 	Figure clone();
+
+    void swapVertical();
+    void swapHorizontal();
 }

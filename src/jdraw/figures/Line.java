@@ -10,16 +10,17 @@ import jdraw.framework.FigureEvent;
 import jdraw.framework.FigureHandle;
 import jdraw.framework.FigureListener;
 
-public class Line extends Figures {
+public class Line extends AbstractFigure {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1012196420965362270L;
 	private java.awt.geom.Line2D.Double line;
+
+    private static final int INTERSIZE = 4;
 	
 	public Line (int x1, int y1, int x2, int y2) {
-		super();
 		line = new java.awt.geom.Line2D.Double(x1, y1, x2, y2);
 	}
 
@@ -36,24 +37,20 @@ public class Line extends Figures {
 			line.y1 += dy;
 			line.x2 += dx;
 			line.y2 += dy;
-			for (FigureListener l : listeners) {
-				l.figureChanged(new FigureEvent(this));
-			}
+            notifyListeners(new FigureEvent(this));
 		}
 
 	}
 
 	@Override
 	public boolean contains(int x, int y) {
-		return line.contains(x, y);
+		return line.intersects(x - INTERSIZE/2, y - INTERSIZE/2, INTERSIZE, INTERSIZE);
 	}
 
 	@Override
 	public void setBounds(Point origin, Point corner) {
 		line.setLine(origin, corner);
-		for (FigureListener l : listeners) {
-			l.figureChanged(new FigureEvent(this));
-		}
+        notifyListeners(new FigureEvent(this));
 	}
 
 	@Override

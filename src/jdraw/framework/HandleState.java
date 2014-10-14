@@ -10,10 +10,14 @@ public interface HandleState {
 
     public Cursor getCursor();
 
+    public Point getAnchor();
+
+    public Figure getOwner();
+
     public void dragInteraction(int x, int y, MouseEvent e, DrawView v);
 
-    default void startInteraction(int x, int y, MouseEvent e, DrawView v) {
-        //DO Nothing in default implementation
-    }
+    void startInteraction(int x, int y, MouseEvent e, DrawView v);
+
+    void stopInteraction(int x, int y, MouseEvent e, DrawView v);
 
 }

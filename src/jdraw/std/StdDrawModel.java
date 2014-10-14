@@ -8,13 +8,8 @@ package jdraw.std;
 import java.util.LinkedList;
 import java.util.List;
 
-import jdraw.framework.DrawCommandHandler;
-import jdraw.framework.DrawModel;
-import jdraw.framework.DrawModelEvent;
+import jdraw.framework.*;
 import jdraw.framework.DrawModelEvent.Type;
-import jdraw.framework.DrawModelListener;
-import jdraw.framework.Figure;
-import jdraw.framework.FigureListener;
 
 /**
  * Provide a standard behavior for the drawing model. This class initially does
@@ -32,20 +27,17 @@ public class StdDrawModel implements DrawModel {
 
 	public StdDrawModel() {
 		fl = (figureEvent) -> {
-			for (DrawModelListener drawModelListener : listeners) {
-				drawModelListener.modelChanged(new DrawModelEvent(this, figureEvent.getFigure(), Type.FIGURE_CHANGED));
-			}
+            notifyListeners(figureEvent.getFigure(), Type.FIGURE_CHANGED);
 		};
 	}
 
-	@Override
+
+    @Override
 	public void addFigure(Figure f) {
 		if (!figureList.contains(f)) {
 			f.addFigureListener(fl);
 			figureList.add(f);
-			for (DrawModelListener l : listeners) {
-				l.modelChanged(new DrawModelEvent(this, f, Type.FIGURE_ADDED));
-			}
+            notifyListeners(f,Type.FIGURE_ADDED);
 		}
 	}
 
@@ -58,9 +50,7 @@ public class StdDrawModel implements DrawModel {
 	public void removeFigure(Figure f) {
 		if (figureList.remove(f)) {
 			f.removeFigureListener(fl);
-			for (DrawModelListener l : listeners) {
-				l.modelChanged(new DrawModelEvent(this, f, Type.FIGURE_REMOVED));
-			}
+            notifyListeners(f,Type.FIGURE_REMOVED);
 		}
 	}
 
@@ -94,9 +84,7 @@ public class StdDrawModel implements DrawModel {
 		}
 		figureList.remove(f);
 		figureList.add(index, f);
-		for (DrawModelListener l : listeners) {
-			l.modelChanged(new DrawModelEvent(this, f, Type.DRAWING_CHANGED));
-		}
+        notifyListeners(f,Type.DRAWING_CHANGED);
 	}
 
 	@Override
@@ -105,9 +93,16 @@ public class StdDrawModel implements DrawModel {
 			figure.removeFigureListener(fl);
 		}
 		figureList.clear();
-		for (DrawModelListener l : listeners) {
-			l.modelChanged(new DrawModelEvent(this, null, Type.DRAWING_CLEARED));
-		}
+		notifyListeners(null, Type.DRAWING_CLEARED);
 	}
+
+
+    private void notifyListeners(Figure figure, Type type) {
+        List<DrawModelListener> list = new LinkedList<>(listeners);
+        DrawModelEvent event = new DrawModelEvent(this, figure, type);
+        for (DrawModelListener drawModelListener : list) {
+            drawModelListener.modelChanged(event);
+        }
+    }
 
 }

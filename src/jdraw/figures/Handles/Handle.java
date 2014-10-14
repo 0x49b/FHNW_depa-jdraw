@@ -1,4 +1,4 @@
-package jdraw.figures;
+package jdraw.figures.Handles;
 
 import jdraw.framework.DrawView;
 import jdraw.framework.Figure;
@@ -11,78 +11,67 @@ import java.awt.event.MouseEvent;
 /**
  * Created by benjamin on 10.10.2014.
  */
-public abstract class Handles implements FigureHandle {
+public class Handle implements FigureHandle {
 
-    Figure owner;
-    Point location;
     HandleState state;
-    int startX;
-    int startY;
 
     private static final int SIZE = 10;
-    private static final int HALF_SIZE = SIZE/2;
 
-
-
-    public Handles(Figure owner, Point location) {
-        this.owner = owner;
-        this.location = location;
+    public Handle(HandleState state) {
+        this.state = state;
     }
 
     public void setState(HandleState state) {
         this.state = state;
     }
 
+    public HandleState getState() {
+        return state;
+    }
+
     @Override
     public Figure getOwner() {
-        return owner;
+        return state.getOwner();
     }
 
     @Override
     public Point getLocation() {
-        return location;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
+        return state.getAnchor();
     }
 
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillRect(location.x - HALF_SIZE, location.y - HALF_SIZE, SIZE, SIZE);
+        g.fillRect(getLocation().x - SIZE/2, getLocation().y - SIZE/2, SIZE, SIZE);
         g.setColor(Color.BLACK);
-        g.drawRect(location.x - HALF_SIZE, location.y - HALF_SIZE, SIZE, SIZE);
+        g.drawRect(getLocation().x - SIZE/2, getLocation().y - SIZE/2, SIZE, SIZE);
     }
 
     @Override
     public Cursor getCursor() {
-       return state.getCursor();
+        return state.getCursor();
     }
 
     @Override
     public boolean contains(int x, int y) {
-        if ((location.x - HALF_SIZE < x) && (x < location.x + HALF_SIZE)
-                && (location.y - HALF_SIZE < y) && (y < location.y + HALF_SIZE)) {
-            return true;
-        }
-        return false;
+        Point p = getLocation();
+        return Math.abs(x - p.x) < SIZE / 2
+                && Math.abs(y - p.y) < SIZE / 2;
     }
 
     @Override
     public void startInteraction(int x, int y, MouseEvent e, DrawView v) {
-        startX = x;
-        startY = y;
+        state.startInteraction(x, y, e, v);
     }
 
     @Override
     public void dragInteraction(int x, int y, MouseEvent e, DrawView v) {
-       state.dragInteraction(x,y,e,v);
+        state.dragInteraction(x, y, e, v);
     }
 
     @Override
     public void stopInteraction(int x, int y, MouseEvent e, DrawView v) {
-        //TODO
+        state.stopInteraction(x, y, e, v);
 
     }
 
