@@ -31,8 +31,7 @@ public class EHandleState extends AbstractHandleState {
         Rectangle r = getOwner().getBounds();
         getOwner().setBounds(new Point(r.x,r.y),
                 new Point(x,r.y+r.height));
-        //TODO Make if's correct
-        if (x > r.x+r.width) {
+        if (x < r.x+r.width && r.width == 0) {
             getOwner().swapHorizontal();
         }
     }
