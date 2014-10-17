@@ -29,13 +29,9 @@ public class SHandleState extends AbstractHandleState {
     @Override
     public void dragInteraction(int x, int y, MouseEvent e, DrawView v) {
         Rectangle r = getOwner().getBounds();
-        getOwner().setBounds(new Point(r.x,r.y),
-                new Point(r.x+r.width,y));
-        //TODO Make if's correct
-        if (x > r.x+r.width) {
-            getOwner().swapHorizontal();
-        }
-        if (y > r.y+r.height) {
+            getOwner().setBounds(new Point(r.x, r.y),
+                    new Point(r.x + r.width, y));
+        if (y < r.y+r.height && r.height == 0) {
             getOwner().swapVertical();
         }
     }
