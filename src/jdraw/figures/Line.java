@@ -6,6 +6,9 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.List;
 
+import jdraw.figures.Handles.CornerLineHandleState;
+import jdraw.figures.Handles.Handle;
+import jdraw.figures.Handles.OrginLineHandleState;
 import jdraw.framework.FigureEvent;
 import jdraw.framework.FigureHandle;
 import jdraw.framework.FigureListener;
@@ -22,6 +25,9 @@ public class Line extends AbstractFigure {
 	
 	public Line (int x1, int y1, int x2, int y2) {
 		line = new java.awt.geom.Line2D.Double(x1, y1, x2, y2);
+        handleList.clear();
+        handleList.add(new Handle(new OrginLineHandleState(this)));
+        handleList.add(new Handle(new CornerLineHandleState(this)));
 	}
 
 	@Override
@@ -58,10 +64,5 @@ public class Line extends AbstractFigure {
 		return line.getBounds();
 	}
 
-	@Override
-	public List<FigureHandle> getHandles() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -72,7 +72,6 @@ public class Handle implements FigureHandle {
     @Override
     public void stopInteraction(int x, int y, MouseEvent e, DrawView v) {
         state.stopInteraction(x, y, e, v);
-
     }
 
 }
