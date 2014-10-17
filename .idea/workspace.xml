@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14fc323d-b814-4802-bc2b-913ccdcfb9cc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jdraw/figures/Handles/EHandleState.java" afterPath="$PROJECT_DIR$/src/jdraw/figures/Handles/EHandleState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jdraw/figures/Handles/WHandleState.java" afterPath="$PROJECT_DIR$/src/jdraw/figures/Handles/WHandleState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jdraw/figures/Handles/NEHandleState.java" afterPath="$PROJECT_DIR$/src/jdraw/figures/Handles/NEHandleState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jdraw/figures/Handles/SEHandleState.java" afterPath="$PROJECT_DIR$/src/jdraw/figures/Handles/SEHandleState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jdraw/figures/Handles/SWHandleState.java" afterPath="$PROJECT_DIR$/src/jdraw/figures/Handles/SWHandleState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jdraw-assignment.iws" />
@@ -37,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NEHandleState.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NEHandleState.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/NEHandleState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-              <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.5223141" vertical-offset="58" max-vertical-offset="748">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -69,11 +70,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WHandleState.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="WHandleState.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/WHandleState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60661155" vertical-offset="58" max-vertical-offset="782">
+            <state vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="782">
               <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NWHandleState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/NWHandleState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="782">
+              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -99,31 +110,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractFigure.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jdraw/figures/AbstractFigure.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1007" max-vertical-offset="1496">
-              <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Handle.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/Handle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1428">
-              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SEHandleState.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SEHandleState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="986">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="850">
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SWHandleState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SWHandleState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="833">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -164,17 +165,17 @@
         <option value="$PROJECT_DIR$/src/jdraw/framework/HandleState.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/Handle.java" />
         <option value="$PROJECT_DIR$/src/jdraw/framework/Figure.java" />
-        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/SEHandleState.java" />
-        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/SWHandleState.java" />
-        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/NWHandleState.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/AbstractHandleState.java" />
-        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/NEHandleState.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/Rect.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/AbstractFigure.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/SHandleState.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/NHandleState.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/EHandleState.java" />
         <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/WHandleState.java" />
+        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/NWHandleState.java" />
+        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/SEHandleState.java" />
+        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/SWHandleState.java" />
+        <option value="$PROJECT_DIR$/src/jdraw/figures/Handles/NEHandleState.java" />
       </list>
     </option>
   </component>
@@ -679,7 +680,7 @@
       <workItem from="1413285482989" duration="6732000" />
       <workItem from="1413459577808" duration="895000" />
       <workItem from="1413541271605" duration="166000" />
-      <workItem from="1413541716550" duration="1621000" />
+      <workItem from="1413541716550" duration="2100000" />
     </task>
     <task id="LOCAL-00001" summary="added all handles to rect">
       <created>1412951926599</created>
@@ -693,11 +694,15 @@
       <created>1413545182784</created>
       <updated>1413545182784</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="E and W Handle working now correct">
+      <created>1413545267154</created>
+      <updated>1413545267154</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33552000" />
+    <option name="totallyTimeSpent" value="34031000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -750,7 +755,8 @@
     <MESSAGE value="added all handles to rect" />
     <MESSAGE value="new Handles" />
     <MESSAGE value="N and S Handle working now correct" />
-    <option name="LAST_COMMIT_MESSAGE" value="N and S Handle working now correct" />
+    <MESSAGE value="E and W Handle working now correct" />
+    <option name="LAST_COMMIT_MESSAGE" value="E and W Handle working now correct" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1052,28 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SWHandleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="850">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/NWHandleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="850">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SEHandleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/Handle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="1054">
@@ -1098,26 +1082,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/NEHandleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Rect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1700">
           <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SHandleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="782">
-          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1142,8 +1110,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/WHandleState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60661155" vertical-offset="58" max-vertical-offset="782">
+        <state vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="782">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/NWHandleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="177" max-vertical-offset="782">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SHandleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="782">
+          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SEHandleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="850">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/SWHandleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="833">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdraw/figures/Handles/NEHandleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5223141" vertical-offset="58" max-vertical-offset="748">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -28,14 +28,13 @@ public class SWHandleState extends AbstractHandleState {
 
     @Override
     public void dragInteraction(int x, int y, MouseEvent e, DrawView v) {
-        //TODO Make it correct
         Rectangle r = getOwner().getBounds();
-        getOwner().setBounds(new Point(x,y),
-                new Point(r.x+r.width,r.y+r.height));
-        if (x > r.x+r.width) {
+        getOwner().setBounds(new Point(x,r.y),
+                new Point(r.x+r.width,y));
+        if (x > r.x+r.width && r.width == 0) {
             getOwner().swapHorizontal();
         }
-        if (y > r.y+r.height) {
+        if (y < r.y+r.height && r.height == 0) {
             getOwner().swapVertical();
         }
     }
