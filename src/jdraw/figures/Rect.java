@@ -91,15 +91,7 @@ public class Rect extends AbstractFigure implements Figure {
         return rectangle.getBounds();
     }
 
-    /**
-     * Returns a list of 8 handles for this Rectangle.
-     *
-     * @return all handles that are attached to the targeted figure.
-     * @see jdraw.framework.Figure#getHandles()
-     */
-    public List<FigureHandle> getHandles() {
-        return handleList;
-    }
+
 
 
 

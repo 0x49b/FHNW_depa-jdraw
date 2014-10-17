@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.util.List;
 
+import jdraw.figures.Handles.*;
 import jdraw.framework.Figure;
 import jdraw.framework.FigureEvent;
 import jdraw.framework.FigureHandle;
@@ -37,7 +38,20 @@ public class Ellipse extends AbstractFigure implements Figure {
 		super();
 		ellipse = new Ellipse2D.Double((double) x, (double) y, (double) w,
 				(double) h);
+        generateHandles();
 	}
+
+    private void generateHandles() {
+        handleList.clear();
+        handleList.add(new Handle(new NWHandleState(this)));
+        handleList.add(new Handle(new NEHandleState(this)));
+        handleList.add(new Handle(new SWHandleState(this)));
+        handleList.add(new Handle(new SEHandleState(this)));
+        handleList.add(new Handle(new NHandleState(this)));
+        handleList.add(new Handle(new SHandleState(this)));
+        handleList.add(new Handle(new WHandleState(this)));
+        handleList.add(new Handle(new EHandleState(this)));
+    }
 
 	@Override
 	public void draw(Graphics g) {
@@ -74,12 +88,6 @@ public class Ellipse extends AbstractFigure implements Figure {
 	@Override
 	public Rectangle getBounds() {
 		return new Rectangle((int) ellipse.x, (int) ellipse.y, (int) ellipse.width, (int) ellipse.height);
-	}
-
-	@Override
-	public List<FigureHandle> getHandles() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -80,4 +80,14 @@ public abstract class AbstractFigure implements Figure {
         N.setState(SState); S.setState(NState);
     }
 
+    /**
+     * Returns a list of 8 handles for this Rectangle.
+     *
+     * @return all handles that are attached to the targeted figure.
+     * @see jdraw.framework.Figure#getHandles()
+     */
+    public List<FigureHandle> getHandles() {
+        return handleList;
+    }
+
 }
