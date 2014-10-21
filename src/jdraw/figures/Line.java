@@ -22,15 +22,24 @@ public class Line extends AbstractFigure {
 	private java.awt.geom.Line2D.Double line;
 
     private static final int INTERSIZE = 4;
+
+    private Point start;
+    private Point end;
 	
 	public Line (int x1, int y1, int x2, int y2) {
 		line = new java.awt.geom.Line2D.Double(x1, y1, x2, y2);
+        updatePoints();
         handleList.clear();
         handleList.add(new Handle(new OrginLineHandleState(this)));
         handleList.add(new Handle(new CornerLineHandleState(this)));
 	}
 
-	@Override
+    private void updatePoints() {
+        start = new Point((int) line.x1,(int) line.y1);
+        end = new Point((int) line.x2,(int) line.y2);
+    }
+
+    @Override
 	public void draw(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.drawLine((int) line.x1, (int) line.y1, (int) line.x2, (int) line.y2);
@@ -43,6 +52,7 @@ public class Line extends AbstractFigure {
 			line.y1 += dy;
 			line.x2 += dx;
 			line.y2 += dy;
+            updatePoints();
             notifyListeners(new FigureEvent(this));
 		}
 
@@ -56,6 +66,7 @@ public class Line extends AbstractFigure {
 	@Override
 	public void setBounds(Point origin, Point corner) {
 		line.setLine(origin, corner);
+        updatePoints();
         notifyListeners(new FigureEvent(this));
 	}
 
@@ -64,5 +75,23 @@ public class Line extends AbstractFigure {
 		return line.getBounds();
 	}
 
+    public Point getStart() {
+        return start;
+    }
 
+    public void setStart(Point start) {
+        this.start = start;
+        line.setLine(start, end);
+        notifyListeners(new FigureEvent(this));
+    }
+
+    public Point getEnd() {
+        return end;
+    }
+
+    public void setEnd(Point end) {
+        this.end = end;
+        line.setLine(start, end);
+        notifyListeners(new FigureEvent(this));
+    }
 }

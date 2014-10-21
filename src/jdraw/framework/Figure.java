@@ -109,4 +109,6 @@ public interface Figure extends java.io.Serializable, Cloneable {
 
     void swapVertical();
     void swapHorizontal();
+
+    void notifyListeners(FigureEvent event);
 }

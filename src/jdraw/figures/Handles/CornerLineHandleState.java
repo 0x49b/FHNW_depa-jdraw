@@ -1,7 +1,9 @@
 package jdraw.figures.Handles;
 
+import jdraw.figures.Line;
 import jdraw.framework.DrawView;
 import jdraw.framework.Figure;
+import jdraw.framework.FigureEvent;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -12,6 +14,9 @@ import java.awt.event.MouseEvent;
 public class CornerLineHandleState extends AbstractHandleState {
     public CornerLineHandleState(Figure owner) {
         super(owner);
+        if (!(owner instanceof Line)) {
+            throw new UnsupportedOperationException();
+        }
     }
 
     @Override
@@ -21,8 +26,8 @@ public class CornerLineHandleState extends AbstractHandleState {
 
     @Override
     public Point getAnchor() {
-        Rectangle r = getOwner().getBounds();
-        return new Point(r.x + r.width, r.y + r.height);
+        Line l = (Line) getOwner();
+        return l.getEnd();
     }
 
     @Override
@@ -33,12 +38,13 @@ public class CornerLineHandleState extends AbstractHandleState {
 
     @Override
     public void dragInteraction(int x, int y, MouseEvent e, DrawView v) {
-        Rectangle r = getOwner().getBounds();
-        getOwner().setBounds(new Point(r.x,r.y), new Point(x,y));
+        Line l = (Line) getOwner();
+        l.setEnd(new Point(x, y));
+        v.getDrawContext().showStatusText("x: " + x + " y: " + y);
     }
 
     @Override
     public void stopInteraction(int x, int y, MouseEvent e, DrawView v) {
-
+        v.getDrawContext().showStatusText("");
     }
 }
