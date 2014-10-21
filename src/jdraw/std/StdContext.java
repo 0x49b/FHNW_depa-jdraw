@@ -10,20 +10,15 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.swing.JFileChooser;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
 import jdraw.figures.EllipseTool;
 import jdraw.figures.LineTool;
 import jdraw.figures.RectTool;
-import jdraw.framework.DrawModel;
-import jdraw.framework.DrawTool;
-import jdraw.framework.DrawToolFactory;
-import jdraw.framework.DrawView;
-import jdraw.framework.Figure;
+import jdraw.framework.*;
+import jdraw.grids.Grid10;
+import jdraw.grids.Grid20;
 
 /**
  * Standard implementation of interface DrawContext.
@@ -131,9 +126,30 @@ public class StdContext extends AbstractContext {
 		editMenu.add(orderMenu);
 
 		JMenu grid = new JMenu("Grid...");
-		grid.add("Grid 1");
-		grid.add("Grid 2");
-		grid.add("Grid 3");
+        JRadioButtonMenuItem noGrid = new JRadioButtonMenuItem("Kein Grid");
+        noGrid.addActionListener(actionEvent -> {
+            getView().setConstrainer(null);
+        });
+        grid.add(noGrid);
+        noGrid.setSelected(true);
+        JRadioButtonMenuItem grid10 = new JRadioButtonMenuItem("Grid 10");
+        grid10.addActionListener(actionEvent -> {
+            PointConstrainer grid10C = new Grid10();
+            getView().setConstrainer(grid10C);
+        });
+		grid.add(grid10);
+        JRadioButtonMenuItem grid20 = new JRadioButtonMenuItem("Grid 20");
+        grid20.addActionListener(actionEvent -> {
+            PointConstrainer grid20C = new Grid20();
+            getView().setConstrainer(grid20C);
+        });
+        grid.add(grid20);
+
+        ButtonGroup g = new ButtonGroup();
+        g.add(noGrid);
+        g.add(grid10);
+        g.add(grid20);
+
 		editMenu.add(grid);
 		
 		return editMenu;
