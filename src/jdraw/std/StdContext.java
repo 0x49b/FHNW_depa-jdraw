@@ -18,7 +18,6 @@ import jdraw.figures.LineTool;
 import jdraw.figures.RectTool;
 import jdraw.framework.*;
 import jdraw.grids.Grid;
-import jdraw.grids.Grid20;
 import jdraw.grids.SnapGrid;
 
 /**

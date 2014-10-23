@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14fc323d-b814-4802-bc2b-913ccdcfb9cc" name="Default" comment="size in constructor">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jdraw/grids/SnapGrid.java" />
-      <change type="DELETED" beforePath="D:\SourceTree\jdraw\src\jdraw\grids\Grid20.java" afterPath="" />
+    <list default="true" id="14fc323d-b814-4802-bc2b-913ccdcfb9cc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/jdraw/std/StdContext.java" afterPath="$PROJECT_DIR$/src/jdraw/std/StdContext.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\SourceTree\jdraw\src\jdraw\grids\Grid10.java" afterPath="$PROJECT_DIR$/src/jdraw/grids/Grid.java" />
     </list>
     <ignored path="jdraw-assignment.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,8 +74,8 @@
       <file leaf-file-name="StdContext.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/jdraw/std/StdContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6020833" vertical-offset="1751" max-vertical-offset="4794">
-              <caret line="146" column="25" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.56666666" vertical-offset="0" max-vertical-offset="5032">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -612,7 +609,7 @@
       <workItem from="1413874647077" duration="4544000" />
       <workItem from="1413889736575" duration="4641000" />
       <workItem from="1413979574839" duration="2943000" />
-      <workItem from="1414077764508" duration="236000" />
+      <workItem from="1414077764508" duration="271000" />
     </task>
     <task id="LOCAL-00001" summary="added all handles to rect">
       <created>1412951926599</created>
@@ -634,15 +631,19 @@
       <created>1413980119691</created>
       <updated>1413980119691</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="size in constructor">
+      <created>1414078008298</created>
+      <updated>1414078008298</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44295000" />
+    <option name="totallyTimeSpent" value="44330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1095,8 +1096,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jdraw/std/StdContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6020833" vertical-offset="1751" max-vertical-offset="4794">
-          <caret line="146" column="25" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.56666666" vertical-offset="0" max-vertical-offset="5032">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding />
         </state>
       </provider>
