@@ -17,8 +17,9 @@ import jdraw.figures.EllipseTool;
 import jdraw.figures.LineTool;
 import jdraw.figures.RectTool;
 import jdraw.framework.*;
-import jdraw.grids.Grid10;
+import jdraw.grids.Grid;
 import jdraw.grids.Grid20;
+import jdraw.grids.SnapGrid;
 
 /**
  * Standard implementation of interface DrawContext.
@@ -134,22 +135,28 @@ public class StdContext extends AbstractContext {
         noGrid.setSelected(true);
         JRadioButtonMenuItem grid10 = new JRadioButtonMenuItem("Grid 10");
         grid10.addActionListener(actionEvent -> {
-            PointConstrainer grid10C = new Grid10();
+            PointConstrainer grid10C = new Grid(10);
             getView().setConstrainer(grid10C);
         });
 		grid.add(grid10);
         JRadioButtonMenuItem grid20 = new JRadioButtonMenuItem("Grid 20");
         grid20.addActionListener(actionEvent -> {
-            PointConstrainer grid20C = new Grid20();
+            PointConstrainer grid20C = new Grid(20);
             getView().setConstrainer(grid20C);
         });
         grid.add(grid20);
+        JRadioButtonMenuItem snapGrid = new JRadioButtonMenuItem("Snap Grid");
+        snapGrid.addActionListener(actionEvent -> {
+            PointConstrainer snapGridC = new SnapGrid(this);
+            getView().setConstrainer(snapGridC);
+        });
+        grid.add(snapGrid);
 
         ButtonGroup g = new ButtonGroup();
         g.add(noGrid);
         g.add(grid10);
         g.add(grid20);
-
+        g.add(snapGrid);
 		editMenu.add(grid);
 		
 		return editMenu;
