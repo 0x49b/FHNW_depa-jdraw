@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
 import jdraw.figures.EllipseTool;
+import jdraw.figures.GroupFigure;
 import jdraw.figures.LineTool;
 import jdraw.figures.RectTool;
 import jdraw.framework.*;
@@ -97,11 +98,29 @@ public class StdContext extends AbstractContext {
 
 		editMenu.addSeparator();
 		JMenuItem group = new JMenuItem("Group");
-		group.setEnabled(false);
+		group.setEnabled(true);
+        group.addActionListener(actionEvent -> {
+            new GroupFigure(getView());
+        });
 		editMenu.add(group);
 
 		JMenuItem ungroup = new JMenuItem("Ungroup");
-		ungroup.setEnabled(false);
+		ungroup.setEnabled(true);
+        ungroup.addActionListener(actionEvent -> {
+            List<Figure> list = getView().getSelection();
+            Iterable<Figure> list2;
+            for (Figure f : list) {
+                if (f instanceof GroupFigure) {
+                    GroupFigure g = (GroupFigure) f;
+                    DrawModel model = getView().getModel();
+                    list2 = g.getFigureParts();
+                    for (Figure f1 : list2) {
+                        model.addFigure(f1);
+                    }
+                    model.removeFigure(f);
+                }
+            }
+        });
 		editMenu.add(ungroup);
 
 		editMenu.addSeparator();
