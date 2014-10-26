@@ -5,10 +5,10 @@ import java.awt.*;
 /**
  * Created by benjamin on 21.10.2014.
  */
-public class Grid10 extends AbstractGrid {
+public class Grid extends AbstractGrid {
 
-    public Grid10() {
-        super(10);
+    public Grid(int size) {
+        super(size);
     }
 
 }

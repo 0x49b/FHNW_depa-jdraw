@@ -4,14 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.List;
 
 import jdraw.figures.Handles.CornerLineHandleState;
 import jdraw.figures.Handles.Handle;
 import jdraw.figures.Handles.OrginLineHandleState;
 import jdraw.framework.FigureEvent;
-import jdraw.framework.FigureHandle;
-import jdraw.framework.FigureListener;
 
 public class Line extends AbstractFigure {
 	
@@ -21,7 +18,7 @@ public class Line extends AbstractFigure {
 	private static final long serialVersionUID = 1012196420965362270L;
 	private java.awt.geom.Line2D.Double line;
 
-    private static final int INTERSIZE = 4;
+    private static final int INTER_SIZE = 4;
 
     private Point start;
     private Point end;
@@ -60,7 +57,7 @@ public class Line extends AbstractFigure {
 
 	@Override
 	public boolean contains(int x, int y) {
-		return line.intersects(x - INTERSIZE/2, y - INTERSIZE/2, INTERSIZE, INTERSIZE);
+		return line.intersects(x - INTER_SIZE /2, y - INTER_SIZE /2, INTER_SIZE, INTER_SIZE);
 	}
 
 	@Override
