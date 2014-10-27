@@ -35,6 +35,10 @@ public class StdContext extends AbstractContext {
 	 */
 	private static final long serialVersionUID = -5572498940223321980L;
 
+    private final Grid grid10C = new Grid(10);
+    private final Grid grid20C = new Grid(20);
+    private final SnapGrid snapGridC = new SnapGrid(this);
+
 	/**
 	 * Constructs a standard context with a default set of drawing tools.
 	 * @param view the view that is displaying the actual drawing.
@@ -120,6 +124,7 @@ public class StdContext extends AbstractContext {
                     model.removeFigure(f);
                 }
             }
+            getView().repaint();
         });
 		editMenu.add(ungroup);
 
@@ -153,19 +158,16 @@ public class StdContext extends AbstractContext {
         noGrid.setSelected(true);
         JRadioButtonMenuItem grid10 = new JRadioButtonMenuItem("Grid 10");
         grid10.addActionListener(actionEvent -> {
-            PointConstrainer grid10C = new Grid(10);
             getView().setConstrainer(grid10C);
         });
 		grid.add(grid10);
         JRadioButtonMenuItem grid20 = new JRadioButtonMenuItem("Grid 20");
         grid20.addActionListener(actionEvent -> {
-            PointConstrainer grid20C = new Grid(20);
             getView().setConstrainer(grid20C);
         });
         grid.add(grid20);
         JRadioButtonMenuItem snapGrid = new JRadioButtonMenuItem("Snap Grid");
         snapGrid.addActionListener(actionEvent -> {
-            PointConstrainer snapGridC = new SnapGrid(this);
             getView().setConstrainer(snapGridC);
         });
         grid.add(snapGrid);

@@ -1,5 +1,6 @@
 package jdraw.figures;
 
+import jdraw.figures.Handles.*;
 import jdraw.framework.*;
 
 import java.awt.*;
@@ -20,12 +21,29 @@ public class GroupFigure extends AbstractFigure implements FigureGroup {
         this.model = view.getModel();
         groupFigures =  view.getSelection();
 
-        bounds = new Rectangle();
+        generateBoundingRectangle();
+        generateHandles();
+        model.addFigure(this);
+    }
+
+    private void generateBoundingRectangle() {
+        bounds = groupFigures.get(0).getBounds();
         for(Figure f: groupFigures) {
             bounds.add(f.getBounds());
             model.removeFigure(f);
         }
-        model.addFigure(this);
+    }
+
+    private void generateHandles() {
+        handleList.clear();
+        handleList.add(new Handle(new NWHandleState(this)));
+        handleList.add(new Handle(new NEHandleState(this)));
+        handleList.add(new Handle(new SWHandleState(this)));
+        handleList.add(new Handle(new SEHandleState(this)));
+        handleList.add(new Handle(new NHandleState(this)));
+        handleList.add(new Handle(new SHandleState(this)));
+        handleList.add(new Handle(new WHandleState(this)));
+        handleList.add(new Handle(new EHandleState(this)));
     }
 
     @Override
@@ -33,6 +51,8 @@ public class GroupFigure extends AbstractFigure implements FigureGroup {
         for(Figure f: groupFigures) {
             f.draw(g);
         }
+        g.setColor(Color.LIGHT_GRAY);
+        g.drawRect(bounds.x,bounds.y,bounds.width,bounds.height);
     }
 
     @Override
@@ -40,6 +60,8 @@ public class GroupFigure extends AbstractFigure implements FigureGroup {
         for(Figure f : groupFigures) {
             f.move(dx, dy);
         }
+        generateBoundingRectangle();
+        notifyListeners(new FigureEvent(this));
     }
 
     @Override
