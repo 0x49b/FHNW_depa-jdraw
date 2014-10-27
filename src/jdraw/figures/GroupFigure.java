@@ -72,6 +72,29 @@ public class GroupFigure extends AbstractFigure implements FigureGroup {
     @Override
     public void setBounds(Point origin, Point corner) {
         //TODO
+        /*System.out.println(origin + " - " + corner);
+        for(Figure f : groupFigures) {
+            Rectangle figureBounds = f.getBounds();
+            double width = corner.x - origin.x; //100% Width
+            double heigth = corner.y - origin.y; //100% Height
+
+            double relativePosX = (figureBounds.y - origin.y) / heigth;
+            int newOriginX = (int) Math.round(origin.x * relativePosX);
+            double relativePosY = (figureBounds.y - origin.y) / heigth;
+            int newOriginY = (int) Math.round(origin.y * relativePosY);
+            System.out.println(newOriginX + " - " + newOriginY);
+            f.setBounds(new Point(newOriginX, newOriginY), corner);
+
+
+            // f.setBounds();
+
+        }
+
+
+        generateBoundingRectangle();
+        notifyListeners(new FigureEvent(this));
+
+        */
     }
 
     @Override
