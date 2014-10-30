@@ -18,7 +18,7 @@ import jdraw.framework.*;
  *
  * @author Christoph Denzler
  */
-public class Rect extends AbstractFigure implements Figure {
+public class Rect extends AbstractFigure implements Figure, Cloneable {
     /**
      *
      */
@@ -27,7 +27,6 @@ public class Rect extends AbstractFigure implements Figure {
      * Use the java.awt.Rectangle in order to save/reuse code.
      */
     private java.awt.Rectangle rectangle;
-
 
     /**
      * Create a new rectangle of the given dimension.
@@ -40,6 +39,12 @@ public class Rect extends AbstractFigure implements Figure {
     public Rect(int x, int y, int w, int h) {
         super();
         rectangle = new java.awt.Rectangle(x, y, w, h);
+        generateHandles();
+    }
+
+    public Rect (Rect r) {
+        super(r);
+        rectangle = new Rectangle(r.rectangle.x, r.rectangle.y, r.rectangle.width, r.rectangle.height);
         generateHandles();
     }
 
@@ -91,11 +96,8 @@ public class Rect extends AbstractFigure implements Figure {
         return rectangle.getBounds();
     }
 
-
-
-
-
-
-
-
+    @Override
+    public Rect clone() {
+        return new Rect(this);
+    }
 }

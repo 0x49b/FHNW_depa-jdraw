@@ -8,9 +8,10 @@ import java.awt.Rectangle;
 import jdraw.figures.Handles.CornerLineHandleState;
 import jdraw.figures.Handles.Handle;
 import jdraw.figures.Handles.OrginLineHandleState;
+import jdraw.framework.Figure;
 import jdraw.framework.FigureEvent;
 
-public class Line extends AbstractFigure {
+public class Line extends AbstractFigure implements Cloneable {
 	
 	/**
 	 * 
@@ -30,6 +31,15 @@ public class Line extends AbstractFigure {
         handleList.add(new Handle(new OrginLineHandleState(this)));
         handleList.add(new Handle(new CornerLineHandleState(this)));
 	}
+
+    public Line(Line l) {
+        super(l);
+        line = new java.awt.geom.Line2D.Double(l.line.x1, l.line.y1, l.line.x2, l.line.y2);
+        updatePoints();
+        handleList.clear();
+        handleList.add(new Handle(new OrginLineHandleState(this)));
+        handleList.add(new Handle(new CornerLineHandleState(this)));
+    }
 
     private void updatePoints() {
         start = new Point((int) line.x1,(int) line.y1);
@@ -90,5 +100,10 @@ public class Line extends AbstractFigure {
         this.end = end;
         line.setLine(start, end);
         notifyListeners(new FigureEvent(this));
+    }
+
+    @Override
+    public Line clone() {
+        return new Line(this);
     }
 }

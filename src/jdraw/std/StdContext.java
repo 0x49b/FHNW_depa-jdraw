@@ -7,6 +7,7 @@ package jdraw.std;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class StdContext extends AbstractContext {
     private final Grid grid10C = new Grid(10);
     private final Grid grid20C = new Grid(20);
     private final SnapGrid snapGridC = new SnapGrid(this);
+    private final LinkedList<Figure> figuresToPaste = new LinkedList<>();
 
 	/**
 	 * Constructs a standard context with a default set of drawing tools.
@@ -96,9 +98,40 @@ public class StdContext extends AbstractContext {
 		});
 
 		editMenu.addSeparator();
-		editMenu.add("Cut").setEnabled(false);
-		editMenu.add("Copy").setEnabled(false);
-		editMenu.add("Paste").setEnabled(false);
+        JMenuItem cut = new JMenuItem("Cut");
+        cut.addActionListener(actionEvent -> {
+            figuresToPaste.clear();
+            for (Figure f : getView().getSelection()) {
+                getModel().removeFigure(f);
+                figuresToPaste.add(f);
+            }
+            showStatusText("Ausgeschnitten");
+        });
+		editMenu.add(cut);
+        JMenuItem copy = new JMenuItem("Copy");
+        copy.addActionListener(actionEvent -> {
+            figuresToPaste.clear();
+            for (Figure f : getView().getSelection()) {
+                figuresToPaste.add(f);
+            }
+            showStatusText("Kopiert");
+        });
+		editMenu.add(copy);
+        JMenuItem paste = new JMenuItem("Paste");
+        paste.addActionListener(actionEvent -> {
+            if (figuresToPaste.isEmpty()) {
+                showStatusText("Zuerst kopieren oder ausschneiden!");
+            } else {
+                Figure f1;
+                for (Figure f : figuresToPaste) {
+                    f1 = f.clone();
+                    f1.move(5, 5);
+                    getModel().addFigure(f1);
+                }
+                showStatusText("Eingefügt");
+            }
+        });
+		editMenu.add(paste);
 
 		editMenu.addSeparator();
 		JMenuItem group = new JMenuItem("Group");

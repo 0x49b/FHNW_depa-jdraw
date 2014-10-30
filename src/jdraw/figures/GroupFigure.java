@@ -4,12 +4,13 @@ import jdraw.figures.Handles.*;
 import jdraw.framework.*;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by benjamin on 26.10.2014.
  */
-public class GroupFigure extends AbstractFigure implements FigureGroup {
+public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneable {
 
     List<Figure> groupFigures;
     Rectangle bounds;
@@ -24,6 +25,17 @@ public class GroupFigure extends AbstractFigure implements FigureGroup {
         generateBoundingRectangle();
         generateHandles();
         model.addFigure(this);
+    }
+
+    public GroupFigure(GroupFigure gf) {
+        this.view = gf.view;
+        this.model = view.getModel();
+        groupFigures = new LinkedList<>();
+        for (Figure f : gf.groupFigures) {
+            groupFigures.add(f.clone());
+        }
+        generateBoundingRectangle();
+        generateHandles();
     }
 
     private void generateBoundingRectangle() {
@@ -106,5 +118,10 @@ public class GroupFigure extends AbstractFigure implements FigureGroup {
     @Override
     public Iterable<Figure> getFigureParts() {
         return groupFigures;
+    }
+
+    @Override
+    public GroupFigure clone() {
+        return new GroupFigure(this);
     }
 }

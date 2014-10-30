@@ -13,7 +13,7 @@ import jdraw.framework.FigureEvent;
 import jdraw.framework.FigureHandle;
 import jdraw.framework.FigureListener;
 
-public class Ellipse extends AbstractFigure implements Figure {
+public class Ellipse extends AbstractFigure implements Figure, Cloneable {
 
 	/**
 	 * 
@@ -40,6 +40,13 @@ public class Ellipse extends AbstractFigure implements Figure {
 				(double) h);
         generateHandles();
 	}
+
+    public Ellipse(Ellipse e) {
+        super(e);
+        ellipse = new Ellipse2D.Double(e.ellipse.x, e.ellipse.y, e.ellipse.width,
+                e.ellipse.height);
+        generateHandles();
+    }
 
     private void generateHandles() {
         handleList.clear();
@@ -90,4 +97,8 @@ public class Ellipse extends AbstractFigure implements Figure {
 		return new Rectangle((int) ellipse.x, (int) ellipse.y, (int) ellipse.width, (int) ellipse.height);
 	}
 
+    @Override
+    public Ellipse clone() {
+        return new Ellipse(this);
+    }
 }

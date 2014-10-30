@@ -1,5 +1,6 @@
 package jdraw.figures;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,10 @@ public abstract class AbstractFigure implements Figure {
 	public AbstractFigure() {
 
 	}
+
+    public AbstractFigure(AbstractFigure f) {
+
+    }
 
 	@Override
 	public void addFigureListener(FigureListener listener) {
