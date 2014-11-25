@@ -15,10 +15,7 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
-import jdraw.figures.EllipseTool;
-import jdraw.figures.GroupFigure;
-import jdraw.figures.LineTool;
-import jdraw.figures.RectTool;
+import jdraw.figures.*;
 import jdraw.framework.*;
 import jdraw.grids.Grid;
 import jdraw.grids.SnapGrid;
@@ -214,7 +211,28 @@ public class StdContext extends AbstractContext {
         g.add(grid20);
         g.add(snapGrid);
 		editMenu.add(grid);
-		
+
+		JMenu dec = new JMenu("Decorator...");
+		JMenuItem borderDec = new JMenuItem("BorderDecorator");
+		borderDec.addActionListener(a -> {
+			List<Figure> flist = getView().getSelection();
+			for (Figure f : flist) {
+				if (f instanceof BorderDecorator) {
+					getModel().removeFigure(f);
+					Figure f2 = ((BorderDecorator) f).getInner();
+					getModel().addFigure(f2);
+					getView().addToSelection(f2);
+				} else {
+					getModel().removeFigure(f);
+					Figure f2 = new BorderDecorator(f);
+					getModel().addFigure(f2);
+					getView().addToSelection(f2);
+				}
+			}
+		});
+		dec.add(borderDec);
+		editMenu.add(dec);
+
 		return editMenu;
 	}
 
