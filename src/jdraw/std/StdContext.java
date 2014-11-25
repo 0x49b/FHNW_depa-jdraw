@@ -230,6 +230,24 @@ public class StdContext extends AbstractContext {
 			}
 		});
 		dec.add(borderDec);
+		JMenuItem logDec = new JMenuItem("LogDecorator");
+		logDec.addActionListener(a -> {
+			List<Figure> flist = getView().getSelection();
+			for (Figure f : flist) {
+				if (f instanceof LogDecorator) {
+					getModel().removeFigure(f);
+					Figure f2 = ((LogDecorator) f).getInner();
+					getModel().addFigure(f2);
+					getView().addToSelection(f2);
+				} else {
+					getModel().removeFigure(f);
+					Figure f2 = new LogDecorator(f);
+					getModel().addFigure(f2);
+					getView().addToSelection(f2);
+				}
+			}
+		});
+		dec.add(logDec);
 		editMenu.add(dec);
 
 		return editMenu;
