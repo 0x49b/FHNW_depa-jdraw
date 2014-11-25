@@ -106,4 +106,14 @@ public class Line extends AbstractFigure implements Cloneable {
     public Line clone() {
         return new Line(this);
     }
+
+    @Override
+    public final <T> T getInstanceOf(Class<T> type) {
+        return type.cast(this);
+    }
+
+    @Override
+    public boolean isInstanceOf(Class<?> type) {
+        return type.isAssignableFrom(this.getClass());
+    }
 }

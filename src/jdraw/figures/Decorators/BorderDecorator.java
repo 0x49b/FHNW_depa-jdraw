@@ -1,4 +1,4 @@
-package jdraw.figures;
+package jdraw.figures.Decorators;
 
 import jdraw.framework.Figure;
 import jdraw.framework.FigureEvent;
@@ -10,11 +10,14 @@ import java.awt.*;
 /**
  * Created by benjamin on 25.11.2014.
  */
-public class LogDecorator implements Figure{
+public class BorderDecorator implements Figure{
 
+
+    private static final long serialVersionUID = -7708441929714478132L;
     private Figure inner;
+    private final static int SIZE = 5;
 
-    public LogDecorator(Figure inner) {
+    public BorderDecorator(Figure inner) {
         this.inner = inner;
     }
 
@@ -29,55 +32,58 @@ public class LogDecorator implements Figure{
 
     public void draw(Graphics g) {
         inner.draw(g);
+        g.setColor(Color.GRAY);
+        Rectangle r = inner.getBounds();
+        g.drawRect(r.x-SIZE, r.y - SIZE, r.width + 2*SIZE, r.height + 2*SIZE);
     }
 
     public void move(int dx, int dy) {
-        System.out.println("Move Figure, dx: " + dx + " - dy: " + dy);
         inner.move(dx, dy);
     }
 
     public boolean contains(int x, int y) {
-        System.out.println("Figure Contains");
         return inner.contains(x, y);
     }
 
     public void setBounds(Point origin, Point corner) {
-        System.out.println("Set Bounds called");
         inner.setBounds(origin, corner);
     }
 
     public Rectangle getBounds() {
-        System.out.println("Get Bounds called");
         return inner.getBounds();
     }
 
     public java.util.List<FigureHandle> getHandles() {
-        System.out.println("Get Handles called");
         return inner.getHandles();
     }
 
     public void addFigureListener(FigureListener listener) {
-        System.out.println("addFigureListener called");
         inner.addFigureListener(listener);
     }
 
     public void removeFigureListener(FigureListener listener) {
-        System.out.println("removeFigureListener called");
         inner.removeFigureListener(listener);
     }
 
     public void swapVertical() {
-        System.out.println("swapVertical called");
         inner.swapVertical();
     }
 
     public void swapHorizontal() {
-        System.out.println("swapHorizontal called");
         inner.swapHorizontal();
     }
 
     public void notifyListeners(FigureEvent event) {
-        System.out.println("notifyListeners called");
         inner.notifyListeners(event);
+    }
+
+    @Override
+    public <T> T getInstanceOf(Class<T> type) {
+        return type.isAssignableFrom(this.getClass()) ? type.cast(this) : inner.getInstanceOf(type);
+    }
+
+    @Override
+    public boolean isInstanceOf(Class<?> type) {
+        return type.isAssignableFrom(this.getClass());
     }
 }

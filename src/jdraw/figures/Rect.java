@@ -6,9 +6,6 @@
 package jdraw.figures;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 import jdraw.figures.Handles.*;
 import jdraw.framework.*;
@@ -99,5 +96,15 @@ public class Rect extends AbstractFigure implements Figure, Cloneable {
     @Override
     public Rect clone() {
         return new Rect(this);
+    }
+
+    @Override
+    public final <T> T getInstanceOf(Class<T> type) {
+        return type.cast(this);
+    }
+
+    @Override
+    public boolean isInstanceOf(Class<?> type) {
+        return type.isAssignableFrom(this.getClass());
     }
 }

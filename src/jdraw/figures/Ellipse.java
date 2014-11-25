@@ -5,13 +5,10 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
-import java.util.List;
 
 import jdraw.figures.Handles.*;
 import jdraw.framework.Figure;
 import jdraw.framework.FigureEvent;
-import jdraw.framework.FigureHandle;
-import jdraw.framework.FigureListener;
 
 public class Ellipse extends AbstractFigure implements Figure, Cloneable {
 
@@ -101,4 +98,14 @@ public class Ellipse extends AbstractFigure implements Figure, Cloneable {
     public Ellipse clone() {
         return new Ellipse(this);
     }
+
+	@Override
+	public final <T> T getInstanceOf(Class<T> type) {
+		return type.cast(this);
+	}
+
+	@Override
+	public boolean isInstanceOf(Class<?> type) {
+		return type.isAssignableFrom(this.getClass());
+	}
 }

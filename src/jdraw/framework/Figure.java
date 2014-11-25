@@ -111,4 +111,7 @@ public interface Figure extends java.io.Serializable, Cloneable {
     void swapHorizontal();
 
     void notifyListeners(FigureEvent event);
+
+	<T> T getInstanceOf(Class<T> type);
+	boolean isInstanceOf(Class<?> type);
 }

@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneable {
 
+    private static final long serialVersionUID = -884754969026873919L;
     List<Figure> groupFigures;
     Rectangle bounds;
     DrawView view;
@@ -25,6 +26,7 @@ public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneabl
         generateBoundingRectangle();
         generateHandles();
         model.addFigure(this);
+        view.addToSelection(this);
     }
 
     public GroupFigure(GroupFigure gf) {
@@ -123,5 +125,15 @@ public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneabl
     @Override
     public GroupFigure clone() {
         return new GroupFigure(this);
+    }
+
+    @Override
+    public final <T> T getInstanceOf(Class<T> type) {
+        return (T) this;
+    }
+
+    @Override
+    public boolean isInstanceOf(Class<?> type) {
+        return type.isAssignableFrom(this.getClass());
     }
 }

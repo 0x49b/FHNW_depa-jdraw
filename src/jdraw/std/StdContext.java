@@ -15,6 +15,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
 import jdraw.figures.*;
+import jdraw.figures.Decorators.BorderDecorator;
+import jdraw.figures.Decorators.LogDecorator;
 import jdraw.framework.*;
 import jdraw.grids.Grid;
 import jdraw.grids.SnapGrid;
@@ -146,8 +148,9 @@ public class StdContext extends AbstractContext {
             List<Figure> list = getView().getSelection();
             Iterable<Figure> list2;
             for (Figure f : list) {
-                if (f instanceof GroupFigure) {
-                    GroupFigure g = (GroupFigure) f;
+                if (f.getInstanceOf(GroupFigure.class) != null) {
+
+                    GroupFigure g = (GroupFigure) f.getInstanceOf(GroupFigure.class);
                     DrawModel model = getView().getModel();
                     list2 = g.getFigureParts();
                     for (Figure f1 : list2) {
