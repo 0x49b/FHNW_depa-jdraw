@@ -4,6 +4,7 @@
  */
 package jdraw.std;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -99,6 +100,7 @@ public class StdContext extends AbstractContext {
 
 		editMenu.addSeparator();
         JMenuItem cut = new JMenuItem("Cut");
+		cut.setAccelerator(KeyStroke.getKeyStroke('X', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         cut.addActionListener(actionEvent -> {
             figuresToPaste.clear();
             for (Figure f : getView().getSelection()) {
@@ -109,24 +111,25 @@ public class StdContext extends AbstractContext {
         });
 		editMenu.add(cut);
         JMenuItem copy = new JMenuItem("Copy");
+		copy.setAccelerator(KeyStroke.getKeyStroke('C', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         copy.addActionListener(actionEvent -> {
             figuresToPaste.clear();
             for (Figure f : getView().getSelection()) {
-                figuresToPaste.add(f);
+                figuresToPaste.add(f.clone());
             }
             showStatusText("Kopiert");
         });
 		editMenu.add(copy);
         JMenuItem paste = new JMenuItem("Paste");
+		paste.setAccelerator(KeyStroke.getKeyStroke('V', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         paste.addActionListener(actionEvent -> {
             if (figuresToPaste.isEmpty()) {
                 showStatusText("Zuerst kopieren oder ausschneiden!");
             } else {
                 Figure f1;
                 for (Figure f : figuresToPaste) {
-                    f1 = f.clone();
-                    f1.move(5, 5);
-                    getModel().addFigure(f1);
+                    f.move(5, 5);
+                    getModel().addFigure(f.clone());
                 }
                 showStatusText("Eingefügt");
             }
