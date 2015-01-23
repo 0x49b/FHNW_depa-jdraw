@@ -19,14 +19,16 @@ public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneabl
     DrawModel model;
 
     public GroupFigure(DrawView view) {
+        this(view, new LinkedList<>());
+    }
+
+    public GroupFigure(DrawView view, List<Figure> list) {
         this.view = view;
         this.model = view.getModel();
-        groupFigures =  view.getSelection();
+        groupFigures =  list;
 
         generateBoundingRectangle();
         generateHandles();
-        model.addFigure(this);
-        view.addToSelection(this);
     }
 
     public GroupFigure(GroupFigure gf) {
@@ -41,10 +43,11 @@ public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneabl
     }
 
     private void generateBoundingRectangle() {
-        bounds = groupFigures.get(0).getBounds();
-        for(Figure f: groupFigures) {
-            bounds.add(f.getBounds());
-            model.removeFigure(f);
+        if (groupFigures.size() > 0) {
+            bounds = groupFigures.get(0).getBounds();
+            for (Figure f : groupFigures) {
+                bounds.add(f.getBounds());
+            }
         }
     }
 
@@ -135,5 +138,11 @@ public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneabl
     @Override
     public boolean isInstanceOf(Class<?> type) {
         return type.isAssignableFrom(this.getClass());
+    }
+
+    public void addFigure(Figure f) {
+        groupFigures.add(f);
+        generateBoundingRectangle();
+        generateHandles();
     }
 }
