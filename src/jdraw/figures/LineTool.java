@@ -15,7 +15,6 @@ public class LineTool extends AbstractTool {
 	@Override
 	public void mouseDown(int x, int y, MouseEvent e) {
         super.mouseDown(x,y,e);
-		fig = new Line(x, y, x, y);
-		getView().getModel().addFigure(fig);
+		getView().getModel().addFigure(setFig(new Line(x, y, x, y)));
 	}
 }

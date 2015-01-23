@@ -16,7 +16,6 @@ public class EllipseTool extends AbstractTool {
 	@Override
 	public void mouseDown(int x, int y, MouseEvent e) {
         super.mouseDown(x,y,e);
-        fig = new Ellipse(x, y, 0, 0);
-        getView().getModel().addFigure(fig);
+        getView().getModel().addFigure(setFig(new Ellipse(x, y, 0, 0)));
 	}
 }

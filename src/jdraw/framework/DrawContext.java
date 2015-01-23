@@ -68,6 +68,8 @@ public interface DrawContext {
 	 */
 	void addTool(DrawTool tool);
 
+	void updateTool(DrawTool tool);
+
 	/**
 	 * Returns the currently active tool.
 	 * 

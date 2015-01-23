@@ -15,11 +15,11 @@ public abstract class AbstractTool implements DrawTool{
 	/** 
 	 * the image resource path. 
 	 */
-	private static final String IMAGES = "/images/";
+	protected static final String IMAGES = "/images/";
 	/**
 	 * The context we use for drawing.
 	 */
-	private DrawContext context;
+    private DrawContext context;
 	/**
 	 * The context's view. This variable can be used as a shortcut, i.e.
 	 * instead of calling context.getView().
@@ -31,14 +31,14 @@ public abstract class AbstractTool implements DrawTool{
 	 * During rectangle creation this variable refers to the point the
 	 * mouse was first pressed.
 	 */
-	private Point anchor = null;
+    private Point anchor = null;
 
     /**
      * The name of this Figure, used for selecting the icon and displaying in statusbar.
      */
     private String name = null;
 
-    AbstractFigure fig = null;
+    private AbstractFigure fig = null;
 
 	public AbstractTool(DrawContext context) {
 		super();
@@ -128,7 +128,7 @@ public abstract class AbstractTool implements DrawTool{
 		return new ImageIcon(getClass().getResource(IMAGES + this.getName().toLowerCase() + ".png"));
 	}
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -143,5 +143,14 @@ public abstract class AbstractTool implements DrawTool{
 
     public DrawContext getContext() {
         return context;
+    }
+
+    public AbstractFigure getFig(){
+        return fig;
+    }
+
+    public AbstractFigure setFig(AbstractFigure f){
+        fig = f;
+        return fig;
     }
 }

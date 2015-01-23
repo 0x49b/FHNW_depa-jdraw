@@ -310,6 +310,17 @@ public abstract class AbstractContext extends JFrame implements DrawContext {
 		m.setSelected(tool.equals(getTool()));
 	}
 
+	public void updateTool(final DrawTool tool) {
+		AbstractButton button = null;
+		for (AbstractButton b : tools.keySet()) {
+			if (tool == tools.get(b)) {
+				button = b;
+				break;
+			}
+		}
+		button.getAction().putValue(Action.SMALL_ICON, tool.getIcon());
+	}
+
 	@Override
 	public final void addMenu(JMenu menu) {
 		menuBar.add(menu);

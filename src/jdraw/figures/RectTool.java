@@ -32,7 +32,6 @@ public class RectTool extends AbstractTool {
 
 	public void mouseDown(int x, int y, MouseEvent e) {
         super.mouseDown(x,y,e);
-        fig = new Rect(x, y, 0, 0);
-		getView().getModel().addFigure(fig);
+		getView().getModel().addFigure(setFig(new Rect(x, y, 0, 0)));
 	}
 }

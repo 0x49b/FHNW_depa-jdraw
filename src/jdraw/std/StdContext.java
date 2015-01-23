@@ -302,6 +302,9 @@ public class StdContext extends AbstractContext {
 		addTool(ellipseTool);
 		DrawTool lineTool = new LineTool(this);
 		addTool(lineTool);
+		JokerTool jokerTool = new JokerTool(this);
+		addTool(null);
+		addTool(jokerTool);
 	}
 
 	/**
