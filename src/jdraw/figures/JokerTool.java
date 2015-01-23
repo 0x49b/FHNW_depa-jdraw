@@ -12,6 +12,11 @@ import javax.swing.*;
 import jdraw.lib.FileClassLoader;
 import jdraw.framework.DrawContext;
 
+/**
+ * Class for the magic Joker Tool.
+ *
+ * @author Chregi Glatthard, Benjamin Leber
+ */
 public class JokerTool extends AbstractTool {
 
     AbstractTool toDecorate;
