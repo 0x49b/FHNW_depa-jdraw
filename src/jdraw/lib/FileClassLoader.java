@@ -14,6 +14,7 @@ import java.net.URLClassLoader;
  * 
  * @author Darryl
  * @see java.net.URLClassLoader
+ * @see https://tips4java.wordpress.com/2008/12/09/file-class-loader/
  */
 public class FileClassLoader extends URLClassLoader {
 
