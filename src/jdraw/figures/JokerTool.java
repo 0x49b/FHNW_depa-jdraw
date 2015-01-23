@@ -47,15 +47,7 @@ public class JokerTool extends AbstractTool {
                     loader.addURL(root.toURI().toURL());
                     Constructor constructor = clazz.getConstructor(DrawContext.class);
                     toDecorate = (AbstractTool) constructor.newInstance(this.getContext());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
+                } catch (IOException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
                 this.getContext().updateTool(this);
