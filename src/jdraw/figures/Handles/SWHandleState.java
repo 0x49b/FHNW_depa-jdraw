@@ -11,6 +11,8 @@ import java.awt.event.MouseEvent;
  */
 public class SWHandleState extends AbstractHandleState {
 
+    private static final long serialVersionUID = 5851195776330337437L;
+
     public SWHandleState(Figure owner) {
         super(owner);
     }

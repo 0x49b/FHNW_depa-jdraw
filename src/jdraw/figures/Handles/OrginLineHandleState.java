@@ -12,6 +12,8 @@ import java.awt.event.MouseEvent;
  */
 public class OrginLineHandleState extends AbstractHandleState {
 
+    private static final long serialVersionUID = -1130264624975715485L;
+
     public OrginLineHandleState(Figure owner) {
         super(owner);
         if (!(owner instanceof Line)) {

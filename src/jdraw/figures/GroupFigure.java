@@ -6,6 +6,7 @@ import jdraw.framework.*;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by benjamin on 26.10.2014.
@@ -15,29 +16,20 @@ public class GroupFigure extends AbstractFigure implements FigureGroup, Cloneabl
     private static final long serialVersionUID = -884754969026873919L;
     List<Figure> groupFigures;
     Rectangle bounds;
-    DrawView view;
-    DrawModel model;
 
-    public GroupFigure(DrawView view) {
-        this(view, new LinkedList<>());
+    public GroupFigure() {
+        this(new LinkedList<>());
     }
 
-    public GroupFigure(DrawView view, List<Figure> list) {
-        this.view = view;
-        this.model = view.getModel();
+    public GroupFigure(List<Figure> list) {
         groupFigures =  list;
-
         generateBoundingRectangle();
         generateHandles();
     }
 
     public GroupFigure(GroupFigure gf) {
-        this.view = gf.view;
-        this.model = view.getModel();
         groupFigures = new LinkedList<>();
-        for (Figure f : gf.groupFigures) {
-            groupFigures.add(f.clone());
-        }
+        groupFigures.addAll(gf.groupFigures.stream().map(Figure::clone).collect(Collectors.toList()));
         generateBoundingRectangle();
         generateHandles();
     }

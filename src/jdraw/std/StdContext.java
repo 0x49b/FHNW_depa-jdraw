@@ -7,8 +7,7 @@ package jdraw.std;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +15,7 @@ import java.util.Objects;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -155,7 +155,7 @@ public class StdContext extends AbstractContext {
         group.setEnabled(true);
         group.addActionListener(actionEvent -> {
             List<Figure> list = getView().getSelection();
-            GroupFigure groupFigure = new GroupFigure(getView(), list);
+            GroupFigure groupFigure = new GroupFigure(list);
             getModel().addFigure(groupFigure);
             getView().addToSelection(groupFigure);
             for (Figure f : list) {
@@ -381,26 +381,42 @@ public class StdContext extends AbstractContext {
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Open Graphic");
         chooser.setDialogType(JFileChooser.OPEN_DIALOG);
-        chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            @Override
-            public String getDescription() {
-                return "JDraw Graphic (*.draw)";
-            }
-
-            @Override
-            public boolean accept(File f) {
-                return f.isDirectory() || f.getName().endsWith(".draw");
-            }
-        });
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JDraw Graphic", "draw");
+        FileNameExtensionFilter filter2 = new FileNameExtensionFilter("JDraw Graphic XML", "xml");
+        chooser.setFileFilter(filter);
+        chooser.setFileFilter(filter2);
         int res = chooser.showOpenDialog(this);
 
         if (res == JFileChooser.APPROVE_OPTION) {
             getModel().removeAllFigures();
-            readFromXML(chooser.getSelectedFile());
+            if (chooser.getSelectedFile().getName().endsWith(".xml")){
+                readFromXML(chooser.getSelectedFile());
+            } else {
+                readFromBin(chooser.getSelectedFile());
+            }
             // read jdraw graphic
             System.out.println("read file "
                     + chooser.getSelectedFile().getName());
         }
+    }
+
+    private void readFromBin(File file) {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(
+                    new FileInputStream(file));
+            DrawModel m = getModel();
+            m.removeAllFigures();
+            while (true) {
+                try {
+                    Object x = ois.readObject();
+                    if(x == null) { break; }
+                    m.addFigure((Figure) x);
+                } catch (ClassNotFoundException e) {
+                    System.out.println("Figure not found, "+e.getMessage());
+                }
+            }
+            ois.close();
+        } catch (Exception e) { System.out.println(e); }
     }
 
     private void readFromXML(File xmlFile) {
@@ -427,7 +443,7 @@ public class StdContext extends AbstractContext {
         for (int count = 0; count < nodeList.getLength(); count++) {
             Node tempNode = nodeList.item(count);
             if (tempNode.hasChildNodes()) {
-                GroupFigure groupFigure = new GroupFigure(getView());
+                GroupFigure groupFigure = new GroupFigure();
                 readFiguresFromXML(tempNode.getChildNodes(), groupFigure);
                 getModel().addFigure(groupFigure);
             } else if ("Rect".equals(tempNode.getNodeName())) {
@@ -496,18 +512,10 @@ public class StdContext extends AbstractContext {
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Save Graphic");
         chooser.setDialogType(JFileChooser.SAVE_DIALOG);
-        FileFilter filter = new FileFilter() {
-            @Override
-            public String getDescription() {
-                return "JDraw Graphic (*.draw)";
-            }
-
-            @Override
-            public boolean accept(File f) {
-                return f.getName().endsWith(".draw");
-            }
-        };
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JDraw Graphic", "draw");
+        FileNameExtensionFilter filter2 = new FileNameExtensionFilter("JDraw Graphic XML", "xml");
         chooser.setFileFilter(filter);
+        chooser.setFileFilter(filter2);
         int res = chooser.showSaveDialog(this);
 
         if (res == JFileChooser.APPROVE_OPTION) {
@@ -516,10 +524,26 @@ public class StdContext extends AbstractContext {
 
             if (chooser.getFileFilter() == filter && !filter.accept(file)) {
                 file = new File(chooser.getCurrentDirectory(), file.getName() + ".draw");
+                saveWithBin(file);
+            } else {
+                file = new File(chooser.getCurrentDirectory(), file.getName() + ".xml");
                 saveToXML(file);
             }
             System.out.println("save current graphic to file " + file.getName());
         }
+    }
+
+    private void saveWithBin(File file) {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(
+                    new FileOutputStream(file)
+            );
+            for (Figure f : getModel().getFigures()) {
+                oos.writeObject(f.clone());
+            }
+            oos.writeObject(null);
+            oos.close();
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     private void saveToXML(File file) {

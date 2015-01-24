@@ -12,6 +12,8 @@ import java.awt.event.MouseEvent;
  * Created by benjamin on 17.10.2014.
  */
 public class CornerLineHandleState extends AbstractHandleState {
+    private static final long serialVersionUID = 3440433698630372619L;
+
     public CornerLineHandleState(Figure owner) {
         super(owner);
         if (!(owner instanceof Line)) {

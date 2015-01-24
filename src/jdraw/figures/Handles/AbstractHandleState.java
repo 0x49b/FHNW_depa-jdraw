@@ -4,7 +4,6 @@ import jdraw.framework.DrawView;
 import jdraw.framework.Figure;
 import jdraw.framework.HandleState;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 
 /**
@@ -12,6 +11,7 @@ import java.awt.event.MouseEvent;
  */
 public abstract class AbstractHandleState implements HandleState {
 
+    private static final long serialVersionUID = -532770533323697297L;
     private Figure owner;
     int startX;
     int startY;

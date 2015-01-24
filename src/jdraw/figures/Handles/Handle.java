@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
  */
 public class Handle implements FigureHandle {
 
+    private static final long serialVersionUID = -3681436982985945755L;
     HandleState state;
 
     private static final int SIZE = 10;

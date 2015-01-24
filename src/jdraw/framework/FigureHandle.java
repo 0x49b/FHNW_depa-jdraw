@@ -20,7 +20,7 @@ import java.awt.event.MouseEvent;
  * @author Dominik Gruntz & Christoph Denzler
  * @version 2.5
  */
-public interface FigureHandle {
+public interface FigureHandle extends java.io.Serializable {
 
 	/**
 	 * Gets the handle's owner.

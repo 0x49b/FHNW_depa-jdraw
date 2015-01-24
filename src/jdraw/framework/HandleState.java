@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 /**
  * Created by benjamin on 10.10.2014.
  */
-public interface HandleState {
+public interface HandleState extends java.io.Serializable {
 
     public Cursor getCursor();
 
